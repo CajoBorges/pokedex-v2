@@ -10,6 +10,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pokédex</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" type="image/png" href="/Poké_Ball_icon.svg.png" />
+        <script src="script.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );

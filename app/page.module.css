@@ -1,4 +1,87 @@
+.tudo {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-family: "Kanit", sans-serif;
+}
+
+.divtitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100px;
+}
+
+.pokemontable {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.number {
+  display: flex;
+  align-items: center;
+}
+
+.number,
+.hp,
+.attack,
+.defense,
+.sp-attack,
+.sp-defense,
+.speed {
+  text-align: right;
+}
+
 .title {
-  font-size: 128px;
-  font-family: 'Comic Mono', Helvetica, Arial;
+  text-align: center;
+  width: 200px;
+
+  padding-block: 1rem;
+  font-size: 65px;
+}
+
+.tableitem {
+  padding: 0.25rem 1.5rem;
+}
+
+.row:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.tableheader {
+  background-color: #cacaca;
+}
+
+.tipo {
+  height: 25px;
+  padding: 2px;
+}
+
+.searchbar {
+  height: 50px;
+  width: 600px;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.searchform {
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.searchbutton {
+  height: 50px;
+  border: 2px solid black;
+  width: 100px;
+  margin-left: 2px;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
 }

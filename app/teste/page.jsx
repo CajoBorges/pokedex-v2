@@ -1,11 +1,11 @@
-import styles from "./page.module.css";
-import Image from "next/image";
-import getAll from "@/lib/api.js";
+"use client";
+import { getAll, getPokemon } from "@/lib/api.js";
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  return (
-    <>
-      <h1></h1>
-    </>
-  );
+  const [state, setState] = useState([]);
+  useEffect(() => {
+    getPokemon("gastrodon").then((st) => setState(st));
+  }, []);
+  return <>{JSON.stringify(state)}</>;
 }
