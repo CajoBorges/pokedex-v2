@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [state, setState] = useState([]);
   useEffect(() => {
-    getPokemon("gastrodon").then((st) => setState(st));
+    getAll().then((st) => setState(st));
   }, []);
   return <>{JSON.stringify(state)}</>;
 }

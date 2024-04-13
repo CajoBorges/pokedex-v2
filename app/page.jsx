@@ -29,38 +29,42 @@ export default function Home() {
             id="searchbar"
             placeholder="Search Pokemon..."
           />
-          <button className={styles.searchbutton} onclick="searchresults()">
+          <button className={styles.searchbutton} onClick={filter}>
             Pesquisar
           </button>
         </div>
         <table id="pokemon-table" className={styles.pokemontable}>
           <thead className={styles.tableheader}>
-            <th>Number</th>
-            <th>Name</th>
-            <th>Type</th>
-            <th>HP</th>
-            <th>Attack</th>
-            <th>Defense</th>
-            <th>Sp.Atk</th>
-            <th>Sp.Def</th>
-            <th>Speed</th>
+            <tr>
+              <th>Number</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>HP</th>
+              <th>Attack</th>
+              <th>Defense</th>
+              <th>Sp.Atk</th>
+              <th>Sp.Def</th>
+              <th>Speed</th>
+            </tr>
           </thead>
-          {state.results &&
-            state.results.map((pokemon) => (
-              <tr key={pokemon.id}>
-                <td>
-                  <Link href={`/pokemon/${pokemon.id}`}>{pokemon.id}</Link>
-                </td>
-                <td>{pokemon.name}</td>
-                <td>{pokemon.type}</td>
-                <td>{pokemon.base.HP}</td>
-                <td>{pokemon.base.Attack}</td>
-                <td>{pokemon.base.Defense}</td>
-                <td>{pokemon.base["Sp. Attack"]}</td>
-                <td>{pokemon.base["Sp. Defense"]}</td>
-                <td>{pokemon.base.Speed}</td>
-              </tr>
-            ))}
+          <tbody>
+            {state.results &&
+              state.results.map((pokemon, i) => (
+                <tr key={pokemon.id}>
+                  <td>
+                    {/* <Link href={`/pokemon/${pokemon.id}`}>{pokemon.id}</Link> */}
+                  </td>
+                  <td>{pokemon.name || "name"}</td>
+                  <td>{pokemon.type || "type"}</td>
+                  <td>{/* {pokemon.base.hp} */}hp</td>
+                  <td>{/* {pokemon.base.Attack} */}attack</td>
+                  <td>{/* {pokemon.base.Defense} */}defense</td>
+                  <td>{/* {pokemon.base["Sp. Attack"]} */}sp. attack</td>
+                  <td>{/* {pokemon.base["Sp. Defense"]} */}sp. defense</td>
+                  <td>{/* {pokemon.base.Speed} */}</td>
+                </tr>
+              ))}
+          </tbody>
         </table>
       </div>
     </div>
