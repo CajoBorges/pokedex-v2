@@ -4,11 +4,15 @@ import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { filter } from "../lib/filter";
+
 
 export default function Home() {
   const [state, setState] = useState([]);
+  const [filterState, setFilterState] = useState([]);
+  const [nome, setNome] = useState("");
   useEffect(() => {
-    getAll().then((st) => setState(st));
+    getAll().then((st) => {setState(st);setFilterState(st.results)})
   }, []);
   return (
     <div className={styles.tudo}>
@@ -28,8 +32,9 @@ export default function Home() {
             className={styles.searchbar}
             id="searchbar"
             placeholder="Search Pokemon..."
+            onChange={(e) => setNome(e.target.value)}            
           />
-          <button className={styles.searchbutton} onClick={filter}>
+          <button className={styles.searchbutton} onClick={(e)=>setFilterState(filter(state?.results, nome, undefined))}>
             Pesquisar
           </button>
         </div>
@@ -48,19 +53,19 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {state.results &&
-              state.results.map((pokemon, i) => (
+            {
+              filterState?.map((pokemon, i) => (
                 <tr key={pokemon.id}>
                   <td>
-                    {/* <Link href={`/pokemon/${pokemon.id}`}>{pokemon.id}</Link> */}
+                    <Link href={`/pokemon/${pokemon.id}`}>{pokemon.id}</Link> 
                   </td>
                   <td>{pokemon.name || "name"}</td>
                   <td>{pokemon.type || "type"}</td>
-                  <td>{/* {pokemon.base.hp} */}hp</td>
-                  <td>{/* {pokemon.base.Attack} */}attack</td>
-                  <td>{/* {pokemon.base.Defense} */}defense</td>
-                  <td>{/* {pokemon.base["Sp. Attack"]} */}sp. attack</td>
-                  <td>{/* {pokemon.base["Sp. Defense"]} */}sp. defense</td>
+                  <td>{JSON.stringify(pokemon)/* {pokemon.base.hp} */}</td>
+                  <td>{/* {pokemon.base.Attack} */}</td>
+                  <td>{/* {pokemon.base.Defense} */}</td>
+                  <td>{/* {pokemon.base["Sp. Attack"]} */}</td>
+                  <td>{/* {pokemon.base["Sp. Defense"]} */}</td>
                   <td>{/* {pokemon.base.Speed} */}</td>
                 </tr>
               ))}
